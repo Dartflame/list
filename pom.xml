@@ -5,28 +5,27 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.6.RELEASE</version>
+        <version>2.5.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>ru.geekbrains</groupId>
-    <artifactId>geek-shopping-list</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>geek-shopping-list</name>
+    <groupId>com.flow</groupId>
+    <artifactId>dartflame-list-app</artifactId>
+    <version>2.5.4</version>
+    <name>dartflame-list-app</name>
     <description>Spring Boot Shopping List</description>
 
     <properties>
-        <java.version>15.0.2</java.version>
+        <java.version>8</java.version>
         <maven.deploy.skip>true</maven.deploy.skip>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>2.5.4</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -75,6 +74,13 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -83,7 +89,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>dockerfile-maven-plugin</artifactId>
@@ -100,8 +105,15 @@
                 <configuration>
                     <repository>registry.heroku.com/${project.artifactId}/web</repository>
                     <tag>latest</tag>
+                    <dockerfile>${docker.file}</dockerfile>
+<!--                    <useMavenSettingsForAuth>true</useMavenSettingsForAuth>-->
                     <buildArgs>
+<!--                        <serverId>docker-hub</serverId>-->
+<!--                        <registryUrl>https://hub.docker.com/</registryUrl>-->
+<!--                        <username>dartflame</username>-->
+<!--                        <password>5e466e6e-aa39-4c92-aaba-dad4bbd4075c</password>-->
                         <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+                        <pushImage>true</pushImage>
                     </buildArgs>
                 </configuration>
             </plugin>
