@@ -104,7 +104,7 @@
                 </executions>
                 <configuration>
                     <repository>
-                        registry.heroku.com/${project.artifactId}/web
+                        registry.heroku.com/v2/${project.artifactId}/web
                     </repository>
                     <tag>latest</tag>
                     <dockerfile>${docker.file}</dockerfile>
