@@ -92,7 +92,7 @@
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>dockerfile-maven-plugin</artifactId>
-                <version>1.4.13</version>
+                <version>1.4.10</version>
                 <executions>
                     <execution>
                         <id>default</id>
@@ -103,7 +103,9 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <repository>registry.heroku.com/${project.artifactId}/web</repository>
+                    <repository>
+                        registry.heroku.com/${project.artifactId}/web
+                    </repository>
                     <tag>latest</tag>
                     <dockerfile>${docker.file}</dockerfile>
 <!--                    <useMavenSettingsForAuth>true</useMavenSettingsForAuth>-->

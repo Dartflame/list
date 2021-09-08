@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 if [ -z "$JDBC_DATABASE_URL" ]; then
     echo "[INFO] Extracting JDBC_DATABASE_URL from Heroku DATABASE_URL"
 
